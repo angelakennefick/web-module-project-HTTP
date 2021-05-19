@@ -26,6 +26,14 @@ const App = (props) => {
   }, []);
 
   const deleteMovie = (id)=> {
+    axios.delete(`http://localhost:5000/movies/${id}`)
+    .then(res=> {
+      props.setMovies(res.data);
+      props.history.push('/movies');
+    })
+    .catch(err=>{
+      console.log(err);
+    })
   }
 
   const addToFavorites = (movie) => {
@@ -49,7 +57,7 @@ const App = (props) => {
             </Route>
 
             <Route path="/movies/:id">
-              <Movie setMovies={setMovies}/>
+              <Movie setMovies={setMovies} deleteMovie={deleteMovie}/>
             </Route>
 
             <Route path="/movies">
