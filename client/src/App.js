@@ -17,7 +17,7 @@ const App = (props) => {
   const [favoriteMovies, setFavoriteMovies] = useState([]);
 
   useEffect(()=>{
-    axios.get('http://localhost:5000/api/movies')
+    axios.get('http://localhost:5000/api/movies/')
       .then(res => {
         setMovies(res.data);
       })
@@ -27,7 +27,7 @@ const App = (props) => {
   }, []);
 
   const deleteMovie = (id)=> {
-    axios.delete(`http://localhost:5000/movies/${id}`)
+    axios.delete(`http://localhost:5000/api/movies/${id}`)
     .then(res=> {
       props.setMovies(res.data);
       props.history.push('/movies');

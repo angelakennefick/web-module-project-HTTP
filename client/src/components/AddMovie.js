@@ -25,7 +25,7 @@ const AddMovie = (props) => {
 
     const handleSubmit = (e) => {
 		e.preventDefault();
-		axios.post(`http://localhost:5000/api/movies/`, movie)
+		axios.post(`http://localhost:3000/api/movies/`, movie)
 		.then(res=>{
 		  localStorage.setMovie(res.data);
 		  push(`/movies/`);
